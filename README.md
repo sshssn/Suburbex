@@ -1,78 +1,106 @@
-# Crystallize - Remix Run - Boilerplate
+# Suburbex E-commerce
 
-# Installation
+A modern e-commerce platform built with Remix and Crystallize, designed to provide a seamless shopping experience.
 
+## About
+
+Suburbex is your one-stop shop for smart shopping across various categories including:
+
+- Beauty
+- Gadgets
+- Gifts For Everyone
+- Health & Wellness
+- Home & Living
+- Lawn & Garden
+- Outdoor Living
+- Pet Supplies
+- Toys & Games
+
+## Tech Stack
+
+- **Framework**: [Remix Run](https://remix.run)
+- **E-commerce Backend**: [Crystallize](https://crystallize.com)
+- **Styling**: TailwindCSS
+- **Deployment**: Vercel
+
+## Features
+
+- 🛍️ Full-featured e-commerce functionality
+- 🎨 Modern and responsive design
+- 🔍 Advanced product search and filtering
+- 🛒 Shopping cart and checkout
+- 📱 Mobile-first approach
+- 🔒 Secure payment processing
+- 📦 Order tracking
+- 👤 User account management
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 16 or later
+- npm or yarn
+- Git
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npx @crystallize/cli-next@latest install remix-run
+git clone https://github.com/yourusername/Suburbex.git
+cd Suburbex
 ```
 
-And you got your project running thanks to :
-
+2. Install dependencies:
 ```bash
-cd remix-run && application
+npm install
+# or
+yarn install
+```
+
+3. Set up environment variables:
+```bash
+cp .env.example .env
+```
+
+4. Start the development server:
+```bash
 npm run dev
+# or
+yarn dev
 ```
 
-# Docker services
+The application will be available at `http://localhost:3000`.
 
-By default, docker is not used.
-In the `provisioning/dev/` folder you will see a `docker-compose.yaml` that can be used.
+## Development
+
+### Docker Services
+
+For local development with additional services:
 
 ```bash
 make serve
 ```
 
-This will start the Docker network, starting Mailcatch and Redis.
-You then need to adapt the `.env` file of course to start using those services.
+This will start:
+- Frontend on HTTP
+- Caddy proxy on HTTPS
+- Docker network with Redis and Mailcatcher
 
-# Custom Local domain and HTTPS
+### Local Development URLs
 
-For a better experience and respect the [Twelve-Facter App](https://12factor.net/dev-prod-parity) we recomend to have local domain
+- Frontend: https://suburbex.superfast.local
+- Mailcatcher Web: http://localhost:3022
+- Mailcatcher SMTP: http://localhost:3021
+- Redis: tcp://localhost:3023
 
-And everything is ready for you too.
+## Contributing
 
-## Add local domains
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Add an entry for the subdomains in your `/etc/hosts` file:
+## License
 
-### Using /etc/hosts
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
-127.0.0.1 SUPERFASTPROJECTIDENTIFIER.superfast.local
-```
+## Contact
 
-### Using dnsmasq for multiple tenants
-
-You only ever need to do this once for all Superfast stores you might set up
-
-```
-brew install dnsmasq
-echo "address=/superfast.local/127.0.0.1" >> /opt/homebrew/etc/dnsmasq.conf
-sudo mkdir -p /etc/resolver && echo "nameserver 127.0.0.1" > /etc/resolver/local
-sudo brew services restart dnsmasq
-```
-
-# Gotchas
-
-`make serve` will:
-
--   run the node project on HTTP
--   run the Caddy proxy on HTTPS
--   run the Docker Network
-
-And then you can
-
--   Frontend: https://furniture.superfast.local
--   Mailcatcher - Web: http://localhost:3022
--   Mailcatcher SMTP: http://localhost:3021
--   Redis: tcp://localhost:3023
-
-> you can stop non stopped services with `make stop`
-
-> Note: to connect to Redis: `docker run --rm --net=host -it redis redis-cli -h 127.0.0.1 -p 3023`
-
-Also
-
--   Frontend run in HTTP on 3018
--   Frontend Live Reload WebScoket run in HTTP on 3019
--   Caddy enables HTTPS on top of them all
+For any inquiries, please reach out to: hello@suburbex.com 
